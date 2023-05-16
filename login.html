@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Salvar Token</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h1>Salvar Token</h1>
+  <label for="token">Token:</label>
+  <input type="text" id="token" name="token">
+  <button onclick="saveToken()">Salvar</button>
+
+  <script>
+    function saveToken() {
+      const token = document.getElementById('token').value;
+
+      axios.post('/save-token', { token })
+        .then(response => {
+          console.log(response.data);
+          alert('Token salvo com sucesso!');
+        })
+        .catch(error => {
+          console.error(error);
+          alert('Erro ao salvar o token!');
+        });
+    }
+  </script>
+</body>
+</html>
